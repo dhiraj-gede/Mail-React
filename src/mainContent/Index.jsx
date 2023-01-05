@@ -5,27 +5,29 @@ import Menubar from "./menubar/Menubar";
 import Reader from "./readSection/Reader";
 import "./index.css";
 import main_json from "../assets/main.json";
+import { AiTwotoneMail,AiFillDelete } from "react-icons/ai";
+import { MdMoveToInbox } from "react-icons/md";
+import { RiSpam2Fill } from "react-icons/ri";
+import { BsFillFolderSymlinkFill } from "react-icons/bs";
 
 const Index = () => {
   const [allMails, setAllMails] = useState([]);
   const [folderList] = useState([
-    "AllMails",
-    "Inbox",
-    "Spam",
-    "Deleted Items",
-    "Custom Folder",
+    { name: "AllMails", icon:  <AiTwotoneMail/>  },
+    { name: "Inbox", icon: <MdMoveToInbox/> },
+    { name: "Spam", icon: <RiSpam2Fill/> },
+    { name: "Deleted Items", icon: <AiFillDelete/> },
+    { name: "Custom Folder", icon: <BsFillFolderSymlinkFill/> },
   ]);
   const [activeMail, setActiveMail] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [activeFolder, setActiveFolder] = useState([]);
   const [folderName, setFolderName] = useState("AllMails");
 
-
-
   const handleActiveMail = (obj) => {
     setActiveMail(obj);
-    setSearchText('');
-    document.getElementById('searchbar').value= '';
+    setSearchText("");
+    document.getElementById("searchbar").value = "";
   };
 
   const handleDelete = (str) => {
@@ -83,43 +85,28 @@ const Index = () => {
     setAllMails(await main_json);
   };
 
-
-
-
-
   const filterMailsBySearch = (searchStr) => {
     const y =
       searchStr === "" || searchStr === undefined || searchStr === " "
         ? ""
         : searchStr.toLowerCase();
     const regex = new RegExp(y);
-    setActiveFolder(allMails.filter((item)=>
-      item.mId.toLowerCase().match(regex)||
-      item.content.toLowerCase().match(regex)||
-      item.subject.toLowerCase().match(regex)
-    ));
-     
+    setActiveFolder(
+      allMails.filter(
+        (item) =>
+          item.mId.toLowerCase().match(regex) ||
+          item.content.toLowerCase().match(regex) ||
+          item.subject.toLowerCase().match(regex)
+      )
+    );
   };
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     if (searchText.length > 0) setFolderName("Search Results");
     else handleActiveFolder("AllMails");
-    filterMailsBySearch(searchText)
+    filterMailsBySearch(searchText);
     console.log(searchText.length);
   }, [searchText]);
-
-
-
-
-
 
   useEffect(() => {
     const newArr = allMails.map((o) => {
@@ -132,11 +119,6 @@ const Index = () => {
     });
     setAllMails(newArr);
   }, [activeMail]);
-
-
-
-
-
 
   useEffect(() => {
     handleActiveFolder(folderName);

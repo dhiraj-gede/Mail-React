@@ -10,7 +10,13 @@ const Folders = ({folderList, handleActiveFolder}) => {
         {folderList.map((item, key) => (
           <li key={key} id={item}>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-            <a href="#" onClick={()=>{handleActiveFolder(item)}}>{item}</a>
+            <a href="#" onClick={()=>{handleActiveFolder(item.name)}} style={{margin:"1rem", fontSize:'1.15em'}}>
+            <i className="icon__s" style={{paddingRight:"1rem"}}>
+            {item.icon}
+              </i>
+              <strong>{item.name}</strong>
+
+            </a>
           </li>
         ))}
       </ul>

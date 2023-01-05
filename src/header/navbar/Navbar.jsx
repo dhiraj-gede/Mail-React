@@ -17,7 +17,7 @@ function Navbar() {
           </li>
           <li>
             <a href="#" className="text">
-              Outlook
+              MailBox
             </a>
           </li>
           <li></li>
