@@ -1,0 +1,26 @@
+.bar {
+  border-radius: 30px;
+  border: 1px solid #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bar:hover {
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+.bar:focus-within {
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  outline: none;
+}
+.searchbar {
+  padding-left: 1em;
+  color: white;
+  height: 2rem;
+  border: none;
+  background: transparent !important;
+  font-size: 16px;
+  outline: none;
+}
+.s_icon {
+  padding-right: 1rem;
+}
