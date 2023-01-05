@@ -16,7 +16,7 @@ const Mails = ({
       <ul className="mails">
         {activeFolder.map((item, key) => (
           <li
-            className="mailElement"
+            className={`mailElement ${item.unread}`}
             key={key}
             id={item.mId}
             style={{
