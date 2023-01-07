@@ -13,13 +13,13 @@ import { BsFillFolderSymlinkFill } from "react-icons/bs";
 const Index = () => {
   const [allMails, setAllMails] = useState([]);
   const [folderList] = useState([
-    { name: "AllMails", icon:  <AiTwotoneMail/>  },
+    { name: "AllMails", icon:  <AiTwotoneMail/>  }, 
     { name: "Inbox", icon: <MdMoveToInbox/> },
     { name: "Spam", icon: <RiSpam2Fill/> },
     { name: "Deleted Items", icon: <AiFillDelete/> },
     { name: "Custom Folder", icon: <BsFillFolderSymlinkFill/> },
   ]);
-  const [activeMail, setActiveMail] = useState([]);
+  const [activeMail, setActiveMail] = useState([]); 
   const [searchText, setSearchText] = useState("");
   const [activeFolder, setActiveFolder] = useState([]);
   const [folderName, setFolderName] = useState("AllMails");
@@ -149,3 +149,5 @@ const Index = () => {
 };
 
 export default Index;
+
+//TODO: refactor Code
